@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  inputHint = 'What needs to be done?0.0';
+  todos: any[] = [];
+  todo = '';
+  addTodo(){
+    this.todos.push({
+      text :this.todo,
+      done : false
+    });
+    this.todo = '';
+  }
+  clearCompleted(){
+    this.todos = this.todos.filter(item =>(!item.done));
+  }
 }
