@@ -14,7 +14,8 @@ export class DataService {
   constructor(private http: Http) { }
 
   getTodos(){
-    return this.http.get('./me/todomvc',this.requestOptions).map(res => {
+    return this.http.get('https://jsonbin.org/me/todomvc',this.requestOptions).map(res => {
+      // return this.http.get('./me/todomvc', this.requestOptions).map(res => {
       return res.json();
     }).catch(error => {
       console.log(error);
@@ -22,7 +23,8 @@ export class DataService {
     })
   }
   saveTodos (newTodos : any[]){
-    return this.http.post('./me/todomvc', newTodos, this.requestOptions).map(res => {
+    return this.http.post('https://jsonbin.org/me/todomvc', newTodos, this.requestOptions).map(res => {
+    // return this.http.post('./me/todomvc', newTodos, this.requestOptions).map(res => {
       return res.json();
     }).catch(error => {
       console.log(error);
