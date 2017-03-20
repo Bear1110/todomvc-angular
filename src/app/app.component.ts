@@ -10,6 +10,7 @@ export class AppComponent {
   todos: any[] = [];
   todo = '';
   filterType = 'All';
+  toggleAll = false;
 
   addTodo(){
     this.todos.push({
@@ -23,5 +24,14 @@ export class AppComponent {
   }
   filterChange(filterType : string){
     this.filterType = filterType;
+  }
+  toggleAllChanged(value : boolean){
+    this.todos.forEach(item => item.done = value);
+  }
+  updateToggleAllState(){
+    this.toggleAll = this.todos.filter(item => (!item.done)).length === 0;
+  }
+  removeTodo(todo){
+    this.todos.splice(this.todos.indexOf(todo),1);
   }
 }
