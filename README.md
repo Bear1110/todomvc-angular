@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
+https://www.youtube.com/watch?v=aMeF8ksXv7o&list=PLpuDiZGfLNIhhdcrbDGUnYs_febOZ49Xw&index=4
+
+觀看此影片做出的範例
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
