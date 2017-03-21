@@ -11,8 +11,8 @@ export class DataService {
     })
   });
 
-  constructor(private http: Http) { }
-
+  constructor(private http: Http) {}
+  
   getTodos(){
     return this.http.get('https://jsonbin.org/me/todomvc',this.requestOptions).map(res => {
       // return this.http.get('./me/todomvc', this.requestOptions).map(res => {

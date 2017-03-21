@@ -15,8 +15,8 @@ export class AppComponent implements OnInit {
   toggleAll = false;
   loading = false;
 
-  constructor(private dataSvc : DataService){
-  }
+  constructor(private dataSvc : DataService){}
+  
   ngOnInit(){
     this.loading = true;
     this.dataSvc.getTodos().subscribe(data => {
