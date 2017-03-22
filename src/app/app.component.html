@@ -1,8 +1,8 @@
-<div class="spinner" *ngIf="loading">
+<div class="spinner" *ngIf="dataSvc.loading">
   <div class="cube1"></div>
   <div class="cube2"></div>
 </div>
-<div id="container" [ngClass]="{blur: loading}">
+<div id="container" [ngClass]="{blur: dataSvc.loading}">
   <section class="todoapp">
     <header class="header">
       <app-title></app-title>
