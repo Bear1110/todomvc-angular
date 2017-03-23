@@ -32,9 +32,7 @@ export class AppComponent implements OnInit {
   }
   clearCompleted(){
     let newTodos = this.todos.filter(item =>(!item.done));
-    this.dataSvc.saveTodos(newTodos).subscribe(data =>{
-      this.todos = data;
-    })
+    this.dataSvc.saveTodos(newTodos).subscribe(data => this.todos = data);
   }
   filterChange(filterType : string){
     this.filterType = filterType;
@@ -42,23 +40,17 @@ export class AppComponent implements OnInit {
   toggleAllChanged(value : boolean){
     let newTodos = [...this.todos];
     newTodos.forEach(item => item.done = value); //forEach 到底怎麼可不可以用來賦予值 不確定
-    this.dataSvc.saveTodos(newTodos).subscribe(data=>{
-      this.todos = data;
-    });
+    this.dataSvc.saveTodos(newTodos).subscribe(data=> this.todos = data );
   }
   updateToggleAllState(){
     this.toggleAll = this.todos.filter(item => (!item.done)).length === 0;
     
     let newTodos = [...this.todos];
-    this.dataSvc.saveTodos(newTodos).subscribe(data=>{
-      this.todos = data;
-    });
+    this.dataSvc.saveTodos(newTodos).subscribe(data=> this.todos = data );
   }
   removeTodo(todo){
     let newTodos = [...this.todos];
     newTodos.splice(this.todos.indexOf(todo),1);
-    this.dataSvc.saveTodos(newTodos).subscribe(data=>{
-      this.todos = data;
-    });
+    this.dataSvc.saveTodos(newTodos).subscribe(data=> this.todos = data);
   }
 }
