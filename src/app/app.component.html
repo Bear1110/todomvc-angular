@@ -6,6 +6,11 @@
   <section class="todoapp">
     <header class="header">
       <app-title></app-title>
+      <div *ngFor="let item of pagination;let i = index" class="pagination" (click)="switchP(i)">{{item.text}}
+        <button class="destroy" (click)="removeP(item)"></button>
+      </div>
+      <button class="pagination" (click)="showPagination()">+</button>
+      <input *ngIf="inputP" class="new-todo" [placeholder]="inputHint" autofocus [(ngModel)]="paginationName" (keyup.enter)="newPagination(paginationNum)">
       <input class="new-todo" [placeholder]="inputHint" autofocus [(ngModel)]="todo" (keyup.enter)="addTodo()">
     </header>
     <!-- This section should be hidden by default and shown when there are todos -->

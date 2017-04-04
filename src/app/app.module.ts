@@ -8,14 +8,16 @@ import { TitleComponent } from './title/title.component';
 import { FooterComponent } from './footer/footer.component';
 import { FilterPipe } from './filter.pipe';
 
-import { DataService } from './data.service'
+import { DataService } from './data.service';
+import { TodoComponent } from './todo/todo.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     TitleComponent,
     FooterComponent,
-    FilterPipe
+    FilterPipe,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
