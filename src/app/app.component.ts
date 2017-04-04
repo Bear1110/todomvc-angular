@@ -82,7 +82,7 @@ export class AppComponent implements OnInit {
     this.inputP = false;
   }
   removeP(P) {
-    if (confirm("確認移除分頁嗎")) {
+    if (confirm("確認移除分頁嗎")) {//
       let newPagination = [...this.pagination];
       console.log(this.pagination.indexOf(P));
       newPagination.splice(this.pagination.indexOf(P), 1);
