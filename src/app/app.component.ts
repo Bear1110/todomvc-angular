@@ -82,13 +82,16 @@ export class AppComponent implements OnInit {
     this.inputP = false;
   }
   removeP(P) {
-    let newPagination = [...this.pagination];
-    console.log(this.pagination.indexOf(P));
-    newPagination.splice(this.pagination.indexOf(P), 1);
-    this.dataSvc.saveTodos(newPagination).subscribe(data => {
-      this.pagination = data
-      this.todos = this.pagination[0].todos;
-    });
+    if (confirm("確認移除分頁嗎")) {
+      let newPagination = [...this.pagination];
+      console.log(this.pagination.indexOf(P));
+      newPagination.splice(this.pagination.indexOf(P), 1);
+      this.dataSvc.saveTodos(newPagination).subscribe(data => {
+        this.pagination = data
+        this.todos = this.pagination[0].todos;
+      });
+
+    }
   }
   switchP(num) {
     this.todos = this.pagination[num].todos;
