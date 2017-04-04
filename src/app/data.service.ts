@@ -10,7 +10,13 @@ export class DataService {
       'authorization': 'token 5e1356f3-4249-40ac-8201-91e6712485b4'
     })
   });
+
   loading = false;
+  pagination: any[] = [];
+
+  getLoading() {
+    return this.loading;
+  }
 
   constructor(private http: Http) { }
 
