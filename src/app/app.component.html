@@ -11,12 +11,12 @@
       </div>
       <button class="pagination" (click)="showPagination()">+</button>
       <input *ngIf="inputP" class="new-todo" [placeholder]="inputHint" autofocus [(ngModel)]="paginationName" (keyup.enter)="newPagination(paginationNum)">
-
     </header>
-    <app-todo [todos]="todos"></app-todo>
-    <!-- This footer should hidden by default and shown when there are todos -->
+    <app-todo [todos]="todos" [pNum]="paginationNum" [p]="pagination"></app-todo>
     <app-footer *ngIf="todos.length > 0" [todos]="todos" (clearCompleted)="clearCompleted()" (filterChange)="filterChange($event)"></app-footer>
   </section>
+
+
   <footer class="info">
     <p>Double-click to edit a todo</p>
     <!-- Remove the below line ↓ -->

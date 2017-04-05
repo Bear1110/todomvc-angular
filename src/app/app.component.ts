@@ -8,12 +8,8 @@ import { DataService } from "./data.service";
   styleUrls: ['./app.component.css', './loading.css']
 })
 export class AppComponent implements OnInit {
-  inputHint = 'What needs to be done? 0__0';
+  inputHint = 'What\s your pagination name? 0__0';
   todos: any[] = [];
-  todo = '';
-  filterType = 'All';
-  toggleAll = false;
-  ///////////////////////for pagination
   paginationName = '';
   paginationNum = 0;
   pagination: any[] = [];
@@ -22,12 +18,8 @@ export class AppComponent implements OnInit {
   constructor(private dataSvc: DataService) { }
 
   ngOnInit() {
-    // this.dataSvc.saveTodos([]).subscribe(data => {
-    //   this.todos = data[this.paginationNum].todos;
-    //   this.todo = '';
-    // });
     this.dataSvc.getTodos().subscribe(data => {
-      this.pagination = data
+      this.pagination = data;
       this.switchP(0);
     });
   }
@@ -50,7 +42,6 @@ export class AppComponent implements OnInit {
   removeP(P) {
     if (confirm("確認移除分頁嗎")) {//
       let newPagination = [...this.pagination];
-      console.log(this.pagination.indexOf(P));
       newPagination.splice(this.pagination.indexOf(P), 1);
       this.dataSvc.saveTodos(newPagination).subscribe(data => {
         this.pagination = data

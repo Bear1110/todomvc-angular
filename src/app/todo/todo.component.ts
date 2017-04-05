@@ -8,45 +8,48 @@ import { DataService } from "../data.service";
 })
 export class TodoComponent implements OnInit {
 
+  inputHint = 'What needs to be done? 0__0';
+
+
   constructor(private dataSvc: DataService) { }
-
   @Input() todos: any[];
+  @Input() pNum: number;
+  @Input() p: any[];
+  filterType = 'All';
+  toggleAll = false;
+  todo: string = '';
+  ngOnInit() { }
 
-  ngOnInit() {
-  }
   addTodo() {
-    // let newP = [...this.pagination];
-    // newP[this.paginationNum].todos.push({
-    //   text: this.todo,
-    //   done: false
-    // });
-    // this.dataSvc.saveTodos(newP).subscribe(data => {
-    //   this.todos = data[this.paginationNum].todos;
-    //   this.todo = '';
-    // })
+    this.p[this.pNum].todos.push({
+      text: this.todo,
+      done: false
+    });
+    this.dataSvc.saveTodos(this.p).subscribe(data => {
+      this.todos = data[this.pNum].todos;
+      this.todo = '';
+    })
   }
   clearCompleted() {
-    // let newTodos = this.todos.filter(item => (!item.done));
-    // this.pagination[this.paginationNum].todos = newTodos;
-    // this.dataSvc.saveTodos(this.pagination).subscribe(data => this.todos = data[this.paginationNum].todos);
+    let newTodos = this.todos.filter(item => (!item.done));
+    this.p[this.pNum].todos = newTodos;
+    this.dataSvc.saveTodos(this.p).subscribe(data => this.todos = data[this.pNum].todos);
   }
   filterChange(filterType: string) {
-    // this.filterType = filterType;
+    this.filterType = filterType;
   }
   toggleAllChanged(value: boolean) {
-    // let newPagination = [...this.pagination];
-    // newPagination[this.paginationNum].todos.forEach(item => item.done = value); //forEach 到底怎麼可不可以用來賦予值 不確定
-    // this.dataSvc.saveTodos(newPagination).subscribe(data => this.todos = data[this.paginationNum].todos);
+    this.p[this.pNum].todos.forEach(item => item.done = value); //forEach 到底怎麼可不可以用來賦予值 不確定
+    this.dataSvc.saveTodos(this.p).subscribe(data => this.todos = data[this.pNum].todos);
   }
   updateToggleAllState() {
-    // this.pagination[this.paginationNum].todos = [...this.todos];
-    // this.dataSvc.saveTodos(this.pagination).subscribe(data => this.todos = data[this.paginationNum].todos);
-    // this.toggleAll = this.pagination[this.paginationNum].todos.filter(item => (!item.done)).length === 0;
+    this.p[this.pNum].todos = [...this.todos];
+    this.dataSvc.saveTodos(this.p).subscribe(data => this.todos = data[this.pNum].todos);
+    this.toggleAll = this.p[this.pNum].todos.filter(item => (!item.done)).length === 0;
   }
   removeTodo(todo) {
-    // let newPagination = [...this.pagination];
-    // newPagination[this.paginationNum].todos.splice(this.todos.indexOf(todo), 1);
-    // this.dataSvc.saveTodos(newPagination).subscribe(data => this.todos = data[this.paginationNum].todos);
+    this.p[this.pNum].todos.splice(this.todos.indexOf(todo), 1);
+    this.dataSvc.saveTodos(this.p).subscribe(data => this.todos = data[this.pNum].todos);
   }
 
 }
