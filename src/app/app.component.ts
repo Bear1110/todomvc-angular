@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   todos: any[] = [];
   paginationName = '';
   paginationNum = 0;
+  filterType = '';
   pagination: any[] = [];
   inputP = false;
 
@@ -24,6 +25,15 @@ export class AppComponent implements OnInit {
     });
   }
   ///////////////////////////////////
+
+  clearCompleted() {
+    let newTodos = this.todos.filter(item => (!item.done));
+    this.pagination[this.paginationNum].todos = newTodos;
+    this.dataSvc.saveTodos(this.pagination).subscribe(data => this.todos = data[this.paginationNum].todos);
+  }
+  filterChange(filterType: string) {
+    this.filterType = filterType;
+  }
   showPagination() {
     this.inputP = !this.inputP;
   }

@@ -15,7 +15,7 @@ export class TodoComponent implements OnInit {
   @Input() todos: any[];
   @Input() pNum: number;
   @Input() p: any[];
-  filterType = 'All';
+  @Input() filterType: string;
   toggleAll = false;
   todo: string = '';
   ngOnInit() { }
@@ -29,14 +29,6 @@ export class TodoComponent implements OnInit {
       this.todos = data[this.pNum].todos;
       this.todo = '';
     })
-  }
-  clearCompleted() {
-    let newTodos = this.todos.filter(item => (!item.done));
-    this.p[this.pNum].todos = newTodos;
-    this.dataSvc.saveTodos(this.p).subscribe(data => this.todos = data[this.pNum].todos);
-  }
-  filterChange(filterType: string) {
-    this.filterType = filterType;
   }
   toggleAllChanged(value: boolean) {
     this.p[this.pNum].todos.forEach(item => item.done = value); //forEach 到底怎麼可不可以用來賦予值 不確定
