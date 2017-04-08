@@ -11,7 +11,6 @@ export class AppComponent implements OnInit {
   inputHint = 'What\s your pagination name? 0__0';
   todos: any[] = [];
   paginationName = '';
-  paginationNum = 0;
   filterType = '';
   pagination: any[] = [];
   inputP = false;
@@ -28,8 +27,8 @@ export class AppComponent implements OnInit {
 
   clearCompleted() {
     let newTodos = this.todos.filter(item => (!item.done));
-    this.pagination[this.paginationNum].todos = newTodos;
-    this.dataSvc.saveTodos(this.pagination).subscribe(data => this.todos = data[this.paginationNum].todos);
+    this.pagination[this.dataSvc.paginationNum].todos = newTodos;
+    this.dataSvc.saveTodos(this.pagination).subscribe(data => this.todos = data[this.dataSvc.paginationNum].todos);
   }
   filterChange(filterType: string) {
     this.filterType = filterType;
@@ -62,6 +61,6 @@ export class AppComponent implements OnInit {
   }
   switchP(num) {
     this.todos = this.pagination[num].todos;
-    this.paginationNum = num;
+    this.dataSvc.paginationNum = num;
   }
 }

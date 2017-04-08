@@ -12,7 +12,8 @@ export class DataService {
   });
 
   loading = false;
-  pagination: any[] = [];
+  // pagination: any[] = [];
+  paginationNum: number;
 
   getLoading() {
     return this.loading;
