@@ -38,8 +38,13 @@ export class FirebaseService {
   getTodos(num: number) {
     this.loading = true;
     return this.http.get('https://todolist-818df.firebaseio.com/todolist/' + num + '.json', this.requestOptions).map(res => {
-      console.log(res.json());
-      return res.json();
+      let test = res.json()['todos'];
+      let tartget = [];
+      Object.keys(test).map(function (objectKey, index) {
+        var value = test[objectKey];
+        tartget.push(value);
+      });
+      return tartget;
     }).finally(() => this.loading = false)
       .catch(error => {
         console.log(error);

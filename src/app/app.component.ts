@@ -62,8 +62,8 @@ export class AppComponent implements OnInit {
   }
   switchP(num) {
     this.dataSvc.getTodos(num).subscribe(data => {
-      this.todos = data['todos'];
-      this.todos = Object.keys(this.todos).map(function (key) { return key; });
+      this.todos = data;
+      // this.todos = Object.keys(this.todos).map(function (key) { return key; });
     });
     this.dataSvc.paginationNum = num;
   }
