@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DataService } from "./data.service";
+import { FirebaseService } from "./firebase.service";
 
 @Component({
   selector: 'app-root',
@@ -15,10 +16,10 @@ export class AppComponent implements OnInit {
   pagination: any[] = [];
   inputP = false;
 
-  constructor(private dataSvc: DataService) { }
+  constructor(private dataSvc: FirebaseService) { }
 
   ngOnInit() {
-    this.dataSvc.getTodos().subscribe(data => {
+    this.dataSvc.getPagination().subscribe(data => {
       this.pagination = data;
       this.switchP(0);
     });
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit {
   clearCompleted() {
     let newTodos = this.todos.filter(item => (!item.done));
     this.pagination[this.dataSvc.paginationNum].todos = newTodos;
-    this.dataSvc.saveTodos(this.pagination).subscribe(data => this.todos = data[this.dataSvc.paginationNum].todos);
+    // this.dataSvc.saveTodos(this.pagination).subscribe(data => this.todos = data[this.dataSvc.paginationNum].todos);
   }
   filterChange(filterType: string) {
     this.filterType = filterType;
@@ -42,25 +43,28 @@ export class AppComponent implements OnInit {
       text: this.paginationName,
       todos: []
     });
-    this.dataSvc.saveTodos(newP).subscribe(data => {
-      this.pagination = data;
-      this.paginationName = '';
-    })
+    // this.dataSvc.saveTodos(newP).subscribe(data => {
+    //   this.pagination = data;
+    //   this.paginationName = '';
+    // })
     this.inputP = false;
   }
   removeP(P) {
     if (confirm("確認移除分頁嗎")) {//
       let newPagination = [...this.pagination];
       newPagination.splice(this.pagination.indexOf(P), 1);
-      this.dataSvc.saveTodos(newPagination).subscribe(data => {
-        this.pagination = data
-        this.todos = this.pagination[0].todos;
-      });
+      // this.dataSvc.saveTodos(newPagination).subscribe(data => {
+      //   this.pagination = data
+      //   this.todos = this.pagination[0].todos;
+      // });
 
     }
   }
   switchP(num) {
-    this.todos = this.pagination[num].todos;
+    this.dataSvc.getTodos(num).subscribe(data => {
+      this.todos = data['todos'];
+      this.todos = Object.keys(this.todos).map(function (key) { return key; });
+    });
     this.dataSvc.paginationNum = num;
   }
 }

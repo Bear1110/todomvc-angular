@@ -6,13 +6,13 @@
   <section class="todoapp">
     <header class="header">
       <app-title></app-title>
-      <div *ngFor="let item of pagination;let i = index" class="pagination" (click)="switchP(i)">{{item.text}}
+      <div *ngFor="let item of pagination;let i = index" class="pagination" (click)="switchP(i)">{{item.title}}
         <button class="destroy" (click)="removeP(item)"></button>
       </div>
       <button class="pagination" (click)="showPagination()">+</button>
       <input *ngIf="inputP" class="new-todo" [placeholder]="inputHint" autofocus [(ngModel)]="paginationName" (keyup.enter)="newPagination(paginationNum)">
     </header>
-    <app-todo [todos]="todos" [pNum]="paginationNum" [p]="pagination" [filterType]="filterType"></app-todo>
+    <app-todo [todos]="todos" [p]="pagination" [filterType]="filterType"></app-todo>
     <app-footer *ngIf="todos.length > 0" [todos]="todos" (clearCompleted)="clearCompleted()" (filterChange)="filterChange($event)"></app-footer>
   </section>
 

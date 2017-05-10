@@ -1,0 +1,109 @@
+[
+  {
+    "text": "長期目標",
+    "todos": [
+      {
+        "text": "看node.js",
+        "done": false
+      },
+      {
+        "text": "專題",
+        "done": false
+      },
+      {
+        "text": "多益",
+        "done": false
+      },
+      {
+        "text": "同樣的動作要執行三次以上就要考慮快捷鍵或自動化。",
+        "done": true
+      },
+      {
+        "text": "20 80 法則",
+        "done": true
+      },
+      {
+        "text": "leetcode",
+        "done": false
+      },
+      {
+        "text": "看軟工",
+        "done": false
+      },
+      {
+        "text": "早點睡",
+        "done": false
+      },
+      {
+        "text": "撐過鄭永斌的三個月",
+        "done": false
+      },
+      {
+        "text": "CPE",
+        "done": false
+      }
+    ]
+  },
+  {
+    "text": "今天",
+    "todos": [
+      {
+        "text": "演算法  資料結構",
+        "done": false
+      },
+      {
+        "text": "早點睡",
+        "done": false
+      },
+      {
+        "text": "看軟工",
+        "done": false
+      },
+      {
+        "text": "Testing (Angular and Laravel",
+        "done": false
+      },
+      {
+        "text": "做一下 Leetcode",
+        "done": false
+      },
+      {
+        "text": "LCS　ＣＤ／ＣＩ",
+        "done": false
+      },
+      {
+        "text": "DCARD 實習",
+        "done": false
+      },
+      {
+        "text": "conflict serializable ??",
+        "done": false
+      },
+      {
+        "text": "物件導向 課程",
+        "done": false
+      }
+    ]
+  },
+  {
+    "text": "要修的課",
+    "todos": [
+      {
+        "text": "軟體工程與實務",
+        "done": false
+      },
+      {
+        "text": "物件導向設計並",
+        "done": false
+      },
+      {
+        "text": "高等演算法",
+        "done": false
+      },
+      {
+        "text": "物件導向 跟 高等演算法衝堂",
+        "done": false
+      }
+    ]
+  }
+]

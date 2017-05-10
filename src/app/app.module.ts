@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FilterPipe } from './filter.pipe';
 
 import { DataService } from './data.service';
+import { FirebaseService } from './firebase.service';
 import { TodoComponent } from './todo/todo.component'
 
 @NgModule({
@@ -24,7 +25,7 @@ import { TodoComponent } from './todo/todo.component'
     FormsModule,
     HttpModule
   ],
-  providers: [DataService],
+  providers: [DataService, FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers } from '@angular/http'
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class DataService {
+export class FirebaseService {
 
   private requestOptions = new RequestOptions({
     headers: new Headers({
-      'authorization': 'token 5e1356f3-4249-40ac-8201-91e6712485b4'
     })
   });
 
@@ -23,9 +22,22 @@ export class DataService {
 
   constructor(private http: Http) { }
 
-  getTodos() {
+  getPagination() {
     this.loading = true;
-    return this.http.get('https://jsonbin.org/me/todomvc', this.requestOptions).map(res => {
+    return this.http.get('https://todolist-818df.firebaseio.com/pagination.json', this.requestOptions).map(res => {
+      console.log(res.json());
+      return res.json();
+    }).finally(() => this.loading = false)
+      .catch(error => {
+        console.log(error);
+        return Observable.of<any[]>([]);
+      })
+
+  }
+
+  getTodos(num: number) {
+    this.loading = true;
+    return this.http.get('https://todolist-818df.firebaseio.com/todolist/' + num + '.json', this.requestOptions).map(res => {
       console.log(res.json());
       return res.json();
     }).finally(() => this.loading = false)
@@ -34,9 +46,10 @@ export class DataService {
         return Observable.of<any[]>([]);
       })
   }
-  saveTodos(newTodos: any[]) {
+  saveTodos(newTodo) {
+    newTodo = { text: newTodo, done: false };
     this.loading = true;
-    return this.http.post('https://jsonbin.org/me/todomvc', newTodos, this.requestOptions).map(res => {
+    return this.http.post('https://todolist-818df.firebaseio.com/todolist/' + this.paginationNum + '/todos.json', newTodo, this.requestOptions).map(res => {
       // return this.http.post('./me/todomvc', newTodos, this.requestOptions).map(res => {
       return res.json();
     }).finally(() => this.loading = false)
@@ -45,5 +58,6 @@ export class DataService {
         return Observable.of<any[]>([]);
       });
   }
+
 
 }
